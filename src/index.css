@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0c0f;
+  --surface-1: #101216;
+  --surface-2: #14171c;
+  --surface-3: #181c22;
+  --line: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.12);
+  --text-1: #f1ece3;
+  --text-2: #a8a49c;
+  --text-3: #6f6d69;
+  --accent: #d9822b;
+  --accent-soft: rgba(217, 130, 43, 0.12);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+}
+
+::selection {
+  background: rgba(217, 130, 43, 0.28);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+  background-clip: content-box;
+}
+
+@layer components {
+  .app-bg {
+    background:
+      radial-gradient(900px 480px at 8% -10%, rgba(217, 130, 43, 0.1), transparent 62%),
+      radial-gradient(800px 420px at 92% 0%, rgba(90, 120, 190, 0.08), transparent 60%),
+      var(--bg);
+  }
+
+  .card {
+    @apply rounded-2xl border;
+    border-color: var(--line);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.008));
+  }
+
+  .card-solid {
+    @apply rounded-2xl border;
+    border-color: var(--line);
+    background: var(--surface-2);
+  }
+
+  .hoverable {
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hoverable:hover {
+    border-color: var(--line-strong);
+    background: rgba(255, 255, 255, 0.045);
+    transform: translateY(-1px);
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium;
+    border: 1px solid var(--line);
+    color: var(--text-2);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-[13px] font-medium transition-all;
+  }
+  .btn-primary {
+    @apply btn text-white;
+    background: linear-gradient(180deg, #e0913a, #c56f2c);
+    box-shadow: 0 8px 22px -10px rgba(217, 130, 43, 0.9), 0 1px 0 rgba(255, 255, 255, 0.16) inset;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.06);
+  }
+  .btn-ghost {
+    @apply btn;
+    border: 1px solid var(--line);
+    color: var(--text-2);
+  }
+  .btn-ghost:hover {
+    border-color: var(--line-strong);
+    color: var(--text-1);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .rail-item {
+    @apply relative flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-[13px] transition-all;
+    color: var(--text-2);
+  }
+  .rail-item:hover {
+    color: var(--text-1);
+    background: rgba(255, 255, 255, 0.045);
+  }
+  .rail-item[data-active='true'] {
+    color: #fff;
+    background: rgba(217, 130, 43, 0.13);
+    box-shadow: inset 0 0 0 1px rgba(217, 130, 43, 0.22);
+  }
+  .rail-item[data-active='true']::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 50%;
+    height: 16px;
+    width: 3px;
+    transform: translateY(-50%);
+    border-radius: 99px;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(217, 130, 43, 0.8);
+  }
+
+  .sec-title {
+    @apply text-[11px] font-semibold uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-3);
+  }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+  }
+
+  .mono-tag {
+    @apply rounded-md px-1.5 py-0.5 font-mono text-[10px];
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-2);
+  }
+}
+
+@layer utilities {
+  .scroll-thin {
+    scrollbar-width: thin;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .grid-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
