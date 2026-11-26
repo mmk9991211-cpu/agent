@@ -10,6 +10,7 @@
     "demo": "node src/hub.mjs demo",
     "web": "node src/hub.mjs web",
     "seed": "node src/hub.mjs seed --force",
+    "static": "node scripts/export-static.mjs",
     "test": "node --test tests/*.test.mjs"
   }
 }

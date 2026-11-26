@@ -11,6 +11,12 @@
 
 ![概览](docs/screenshots/overview.png)
 
+## 在线看看
+
+**只读演示**：<https://mmk9991211-cpu.github.io/agent/hub/>
+
+静态托管的版本，数据是导出那一刻的快照，点按钮不会真的发布（会提示只读）。想看真的能动，跑下面的「快速开始」。
+
 ## 快速开始
 
 ```bash
@@ -78,10 +84,21 @@ src/
   web/
     server.mjs     http 服务 + JSON 接口（全站口令）
     index.html  app.js  style.css
+scripts/
+  export-static.mjs  导出只读快照 dist-static/，供 GitHub Pages 这类静态托管
 tests/state.test.mjs
 ```
 
 数据落在 `data/store.json`，删掉就回到干净状态（`data/` 与 `config.json` 都不进 git）。
+
+### 静态托管
+
+```bash
+npm run static      # → dist-static/（index.html + app.js + style.css + snapshot.json）
+```
+
+前端会先试 `/api/*`，拿不到 JSON 就自动回落到同目录的 `snapshot.json`，进入只读模式并挂一条提示条。
+所以同一份 `src/web` 既能配后端跑，也能直接丢到静态托管上给人看。快照里是演示数据，不含任何口令。
 
 ## 接口
 
