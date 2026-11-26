@@ -1,0 +1,21 @@
+{
+  "name": "MZ 分发中控",
+  "port": 8899,
+  "key": "mz-demo",
+  "tickSeconds": 20,
+
+  "batches": [
+    ["bilibili", "douyin"],
+    ["xhs", "channels"],
+    ["youtube"],
+    ["x", "threads", "instagram"]
+  ],
+  "auto": ["youtube", "x", "instagram", "threads"],
+  "manual": ["bilibili", "douyin", "xhs", "channels"],
+  "disabled": [],
+
+  "webhook": "",
+  "keepAlive": ["channels"],
+  "sampleHours": 6,
+  "rootPath": "./data/episodes"
+}

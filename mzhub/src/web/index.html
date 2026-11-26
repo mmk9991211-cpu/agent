@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MZ 分发中控</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B0A08'/%3E%3Cpath d='M7 23V11l5 7 5-7v12' stroke='%23D8A24A' stroke-width='2.2' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M20 11h6l-6 12h6' stroke='%23E9C583' stroke-width='2.2' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 4l11 6-11 6-11-6 11-6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
+            <path d="M5 16l11 6 11-6M5 22l11 6 11-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" opacity=".55" />
+          </svg>
+          <div class="brand-txt">
+            <strong>MZ 分发中控</strong>
+            <span>发布 · 数据 · 复盘</span>
+          </div>
+        </div>
+
+        <nav id="nav" class="nav"></nav>
+
+        <div class="side-foot">
+          <div class="dot-row"><i id="statusDot" class="dot live"></i><span id="statusTxt">巡检中</span></div>
+          <div class="tick" id="clock">--:--:--</div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">概览</h1>
+            <p id="pageSub" class="sub">今天的数据，一屏看完</p>
+          </div>
+          <div class="top-right">
+            <div class="pill" id="waitPill" hidden><i class="dot warn"></i><span id="waitTxt">待处理</span></div>
+            <button class="icon-btn" id="refresh" title="刷新">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <div id="roBanner" class="ro-banner" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20.5h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <strong>演示快照 · 只读</strong>
+            <span>数据是导出时的定格状态，点按钮不会真的发布。本地执行 <code>node src/hub.mjs demo</code> 才能操作。</span>
+          </div>
+        </div>
+
+        <section id="view" class="view"><div class="loading">加载中…</div></section>
+      </main>
+    </div>
+
+    <div id="gate" class="gate" hidden>
+      <form class="gate-card" id="gateForm">
+        <div class="gate-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M5 24V9l6 8 6-8v15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+            <path d="M21 9h7l-7 15h7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" opacity=".65" />
+          </svg>
+        </div>
+        <h2>MZ 分发中控</h2>
+        <p>输入访问口令。口令在 <code>config.json</code> 的 <code>key</code>，默认 <code>mz-demo</code>。</p>
+        <input id="gateInput" type="password" placeholder="访问口令" autocomplete="current-password" />
+        <button class="btn primary" type="submit">进入</button>
+        <span id="gateErr" class="gate-err"></span>
+      </form>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

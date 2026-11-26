@@ -1,0 +1,15 @@
+{
+  "name": "mz-hub",
+  "version": "0.1.0",
+  "description": "MZ 分发中控：自媒体多平台发布调度与数据监控（本机 Node，零依赖）",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "bin": { "mzhub": "src/hub.mjs" },
+  "scripts": {
+    "demo": "node src/hub.mjs demo",
+    "web": "node src/hub.mjs web",
+    "seed": "node src/hub.mjs seed --force",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
