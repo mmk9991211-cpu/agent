@@ -18,6 +18,14 @@
 
 ---
 
+## 在线访问
+
+**https://mmk9991211-cpu.github.io/agent/**
+
+> 由 GitHub Pages 托管（`gh-pages` 分支），静态资源走相对路径，支持子路径部署。
+
+---
+
 ## 这是什么
 
 **MZ** 是一个个人向的内容运营工作台前端。它把自媒体日常里最分散的几件事——找选题、写稿、管素材、排期、发布前打包——收进一个界面，并且让每个账号的定位、文风、已发内容作为「长期记忆」被反复复用。
@@ -101,6 +109,22 @@ mz/
 - **信息层级**：所有卡片 18px 圆角、1px 低对比描边、渐变填充代替纯色块；不使用重阴影。
 - **字号**：标题 19–21px，正文 13–13.5px，元信息 9.5–11px，数字一律 tabular-nums。
 - **路由**：hash 路由（`#hot`、`#drafts`…），静态托管可直接深链接。
+
+## 构建与部署
+
+```bash
+npm install
+npm run dev      # 本地开发
+npm run build    # 产物输出到 dist/
+```
+
+GitHub Pages 采用 **`gh-pages` 分支直接托管**：
+
+1. `npm run build` 生成 `dist/`
+2. 把 `dist/` 内容提交到 `gh-pages` 分支（根目录放 `.nojekyll`）
+3. 仓库 Settings → Pages → Source 选 `Deploy from a branch` → `gh-pages` / `/`
+
+`vite.config.ts` 中 `base: './'` 使用相对路径，因此部署在 `/agent/` 这类子路径下也能正常加载资源。
 
 ## 说明
 
